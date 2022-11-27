@@ -1,0 +1,46 @@
+//Name Ankit Kumar Mishra
+//Roll no 2100290120030
+//Program to find subArray  with a sum
+#include<stdio.h>
+#include<stdlib.h>
+void subArraySum(int arr[], int n, int sum)
+{
+    // Pick a starting point
+    for (int i = 0; i < n; i++) {
+        int currentSum = arr[i];
+ 
+        if (currentSum == sum) {
+            printf("Sum found at indexe %d ", i);
+            return;
+        }
+        else {
+            // Try all subarrays starting with 'i'
+            for (int j = i + 1; j < n; j++) {
+                currentSum += arr[j];
+ 
+                if (currentSum == sum) {
+                    printf("Sum found between indexes %d "
+                           "and %d",
+                           i, j);
+                    return;
+                }
+            }
+        }
+    }
+    printf("No subarray found");
+    return;
+}
+int main()
+{
+    int i,sum,n;
+    printf("Enter the array size   ");
+    scanf("%d",&n);
+    int arr[n];
+    printf("Enter the array Elements \n");
+    for(i=0;i<n;i++)
+    scanf("%d",&arr[i]);
+    printf("\nEnter the sum  ");
+    scanf("%d",&sum);
+    subArraySum(arr,n,sum);
+    return 0;
+}
